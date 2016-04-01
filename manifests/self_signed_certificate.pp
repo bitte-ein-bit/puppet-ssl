@@ -158,7 +158,7 @@ define ssl::self_signed_certificate (
 
   # create certificate
   exec {"create certificate ${name}.crt":
-    command     => "openssl req -new -x509 -days ${days} -config ${basename}.cnf -key ${basename}.key -out ${basename}.crt",
+    command     => "openssl req -new -x509 -sha256 -days ${days} -config ${basename}.cnf -key ${basename}.key -out ${basename}.crt",
     refreshonly => true,
     before      => File["${basename}.crt"],
   }
